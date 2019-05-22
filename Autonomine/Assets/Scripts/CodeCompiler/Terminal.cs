@@ -10,23 +10,22 @@ public class Terminal : MonoBehaviour
     public InputField input;
     public Text history;
 
+    // temporary
+    Dictionary<string, object> memory = new Dictionary<string, object>();
+
     // Start is called before the first frame update
     void Start()
     {
-        // temporary
-        Dictionary<string, object> memory = new Dictionary<string, object>();
-
         terminal = this;
-        
-        input.onEndEdit.AddListener(delegate {
-            Print("> " + input.text);
+    }
 
-            string[] commands = ScriptParser.ParseCommandStrings(input.text);
-            (memory, _) = Command.Run(memory, commands);
+    public void Run() {
+        Print("> " + input.text);
 
-            input.text = "";
-            //input.ActivateInputField();
-        });
+        string[] commands = ScriptParser.ParseCommandStrings(input.text);
+        (memory, _) = Command.Run(memory, commands);
+
+        input.text = "";
     }
 
     public void Print(string log) {
