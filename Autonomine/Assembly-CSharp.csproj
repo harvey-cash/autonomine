@@ -62,34 +62,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CodeCompiler\Command.cs" />
-    <Compile Include="Assets\Scripts\CodeCompiler\Library.cs" />
-    <Compile Include="Assets\Scripts\CodeCompiler\ScriptParser.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\Command.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\Library.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\ScriptParser.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UserMethod.cs" />
     <Compile Include="Assets\Scripts\CodeCompiler\ScriptWindow.cs" />
     <Compile Include="Assets\Scripts\CodeCompiler\Terminal.cs" />
-    <Compile Include="Assets\Scripts\CodeCompiler\UserMethod.cs" />
     <Compile Include="Assets\Scripts\Config.cs" />
     <Compile Include="Assets\Scripts\Game\MovingBlock.cs" />
+    <None Include="Assets\Libraries\sand-sharp-language\Python\batch_script.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files/2019.1.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -275,13 +276,13 @@
       <HintPath>D:/Program Files/2019.1.1f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/GitRepos/harv-code-compiler/C#/Autonomine/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/GitRepos/autonomine/Autonomine/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Program Files/2019.1.1f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
