@@ -34,7 +34,7 @@ public class MovingBlock : MonoBehaviour
 
     private void Start() {
         memory = new Dictionary<string, object>();
-        InvokeRepeating("OnTurn", 0.05f, 0.05f);
+        InvokeRepeating("OnTurn", 0, 10f);
     }
 
     private void OnTurn() {
