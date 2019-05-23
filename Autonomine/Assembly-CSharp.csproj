@@ -71,9 +71,10 @@
     <Compile Include="Assets\Scripts\Config.cs" />
     <Compile Include="Assets\Scripts\Game\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Machine.cs" />
-    <Compile Include="Assets\Scripts\Game\MovingBlock.cs" />
     <Compile Include="Assets\Scripts\Interface\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Machines\Machine.cs" />
+    <Compile Include="Assets\Scripts\Machines\MovingBlock.cs" />
+    <Compile Include="Assets\Scripts\Machines\PlayerMachine.cs" />
     <None Include="Assets\Libraries\sand-sharp-language\Python\batch_script.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GitRepos/autonomine/Autonomine/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

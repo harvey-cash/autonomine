@@ -37,7 +37,6 @@ public class UIManager : MonoBehaviour {
             if (focus != null) { focus.SetFocus(false); }
             focus = machine;
 
-
             nameInputField.text = focus.MachineName;
             ShowScript(focus.Script);
         }
