@@ -2,45 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingBlock : MonoBehaviour
+public class MovingBlock : Machine
 {
-    public static MovingBlock block;
-    public string[] commands;
-    Dictionary<string, object> memory;
+    public override Command.Method[] ExposeMethods() {
+        Command.Method MoveBlock = (methods, memory, name, paramStrings, subscript) => {
+            object[] parameters = Command.EvaluateParameters(methods, paramStrings, memory);
 
-    private bool turnTaken = false;
-    public static Library.Method MoveBlock = (memory, name, paramStrings, subscript) => {
-        object[] parameters = Command.EvaluateParameters(paramStrings, memory);
+            // Only allowed to move physically once per tick
+            if (actionTaken) { return (memory, null); }
 
-        if (!block.turnTaken) {
             float x = (float)parameters[0];
             float z = (float)parameters[1];
 
-            block.Move(new Vector2(x, z));
-        }
-        block.turnTaken = true;
+            transform.Translate(new Vector3(x, 0, z));
+            actionTaken = true;
 
-        return (memory, null);
-    };
+            return (memory, null);
+        };
 
-    public void Move(Vector2 dir) {
-        transform.Translate(new Vector3(dir.x, 0, dir.y));
+        return new Command.Method[] { MoveBlock };
     }
 
-    private void Awake() {
-        block = this;
-        Library.methods.Add("move", MoveBlock);
-    }
-
-    private void Start() {
-        memory = new Dictionary<string, object>();
-        InvokeRepeating("OnTurn", 0, 10f);
-    }
-
-    private void OnTurn() {
-        block.turnTaken = false;        
+    public override void OnTick() {
         memory["xPos"] = transform.position.x;
-        memory["zPos"] = transform.position.z;
-        (memory, _) = Command.Run(memory, commands);
+        memory["zPos"] = transform.position.z;        
     }
 }

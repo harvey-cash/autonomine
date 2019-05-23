@@ -12,6 +12,7 @@ public class Terminal : MonoBehaviour
 
     // temporary
     Dictionary<string, object> memory = new Dictionary<string, object>();
+    readonly Dictionary<string, Command.Method> methods = new Dictionary<string, Command.Method>(Library.builtIns);
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class Terminal : MonoBehaviour
         Print("> " + input.text);
 
         string[] commands = ScriptParser.ParseCommandStrings(input.text);
-        (memory, _) = Command.Run(memory, commands);
+        (memory, _) = Command.Run(methods, memory, commands);
 
         input.text = "";
     }
