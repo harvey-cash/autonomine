@@ -9,29 +9,37 @@ public abstract class Machine : MonoBehaviour
 
     public int ID { private set; get; }
 
-    protected bool actionTaken = false;
+    protected bool runOnTick = true, actionTaken = false;
     protected Dictionary<string, object> memory;
     protected Dictionary<string, Command.Method> methods;
 
-    protected string[] commands = null;
-    public void SetCommands(string[] commands) { this.commands = commands; }
+    public string Script { private set; get; }
+    public void SetScript(string script) {
+        this.Script = script;
+        commands = ScriptParser.ParseCommandStrings(script);
+    }
+    private string[] commands;
 
     private void Start() {
         ID = GenerateID();
         memory = new Dictionary<string, object>();
-        methods = new Dictionary<string, Command.Method>(Library.builtIns);
+        methods = Library.GenerateLibrary(GetMethodsDict());
 
-        GameManager.manager.onTick.AddListener(DoTick);
+        GameManager.manager.onTick.AddListener(TickListener);
     }
 
-    private void DoTick() {
-        actionTaken = false;
-        if (commands != null) {
+    private void TickListener() {
+        if (runOnTick && commands != null) {
+            actionTaken = false;
             OnTick(); // allow sub class to put whatever it likes in memory, etc.
             (memory, _) = Command.Run(methods, memory, commands);
         }
     }
 
-    public abstract Command.Method[] ExposeMethods();
+    public abstract Dictionary<string, Command.Method> GetMethodsDict();
     public abstract void OnTick();
+
+    private void OnMouseDown() {
+        UIManager.ui.Focus(this);
+    }
 }

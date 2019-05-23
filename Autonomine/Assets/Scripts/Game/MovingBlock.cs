@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingBlock : Machine
 {
-    public override Command.Method[] ExposeMethods() {
+    public override Dictionary<string,Command.Method> GetMethodsDict() {
         Command.Method MoveBlock = (methods, memory, name, paramStrings, subscript) => {
             object[] parameters = Command.EvaluateParameters(methods, paramStrings, memory);
 
@@ -20,7 +20,11 @@ public class MovingBlock : Machine
             return (memory, null);
         };
 
-        return new Command.Method[] { MoveBlock };
+        Dictionary<string, Command.Method> methodsDict = new Dictionary<string, Command.Method>() {
+            {"move", MoveBlock }
+        };
+
+        return methodsDict;
     }
 
     public override void OnTick() {
