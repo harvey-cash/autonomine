@@ -62,8 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Libraries\sand-sharp-language\C#\Command.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\Library.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\Method.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\MethodBuilder.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\SandSharp.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\ScriptParser.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\UserMethod.cs" />
     <Compile Include="Assets\Scripts\CodeCompiler\ScriptWindow.cs" />

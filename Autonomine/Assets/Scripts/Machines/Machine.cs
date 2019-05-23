@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public abstract class Machine : MonoBehaviour
 
     protected bool runOnTick = true, actionTaken = false;
     protected Dictionary<string, object> memory;
-    protected Dictionary<string, Command.Method> methods;
+    protected Dictionary<string, Method> methods;
 
 
     /* ~~~~~~ INITIALISATION ~~~~~~~ */
@@ -22,7 +23,7 @@ public abstract class Machine : MonoBehaviour
         SetupLabel();
 
         memory = new Dictionary<string, object>();
-        methods = Library.GenerateLibrary(GetMethodsDict());
+        methods = MethodBuilder.GenerateLibrary(GetMethods());
 
         GameManager.manager.onTick.AddListener(TickListener);
     }
@@ -31,11 +32,11 @@ public abstract class Machine : MonoBehaviour
         if (runOnTick && commands != null) {
             actionTaken = false;
             OnTick(); // allow sub class to put whatever it likes in memory, etc.
-            (memory, _) = Command.Run(methods, memory, commands);
+            (memory, _) = SandSharp.Run(methods, memory, commands);
         }
     }
 
-    public abstract Dictionary<string, Command.Method> GetMethodsDict();
+    public abstract (string, Func<object[], object>)[] GetMethods();
     public abstract void OnTick();
 
 
@@ -50,7 +51,7 @@ public abstract class Machine : MonoBehaviour
     
     // Run one-offs (i.e. from terminal)
     public void RunCommands(string[] commandArray) {
-        (memory, _) = Command.Run(methods, memory, commandArray);
+        (memory, _) = SandSharp.Run(methods, memory, commandArray);
     }
 
     /* ~~~~~~ LABEL AND SELECTING ~~~~~~~ */

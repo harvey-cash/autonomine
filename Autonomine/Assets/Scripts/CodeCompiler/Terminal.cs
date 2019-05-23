@@ -12,7 +12,7 @@ public class Terminal : MonoBehaviour
 
     // temporary
     Dictionary<string, object> memory = new Dictionary<string, object>();
-    readonly Dictionary<string, Command.Method> methods = new Dictionary<string, Command.Method>(Library.builtIns);
+    readonly Dictionary<string, Method> methods = new Dictionary<string, Method>(Library.builtIns);
 
     // Start is called before the first frame update
     void Start()
