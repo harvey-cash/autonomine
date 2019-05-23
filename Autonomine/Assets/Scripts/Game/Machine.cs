@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Machine : MonoBehaviour
 {
@@ -13,15 +14,13 @@ public abstract class Machine : MonoBehaviour
     protected Dictionary<string, object> memory;
     protected Dictionary<string, Command.Method> methods;
 
-    public string Script { private set; get; }
-    public void SetScript(string script) {
-        this.Script = script;
-        commands = ScriptParser.ParseCommandStrings(script);
-    }
-    private string[] commands;
+
+    /* ~~~~~~ INITIALISATION ~~~~~~~ */
 
     private void Start() {
         ID = GenerateID();
+        SetupLabel();
+
         memory = new Dictionary<string, object>();
         methods = Library.GenerateLibrary(GetMethodsDict());
 
@@ -39,7 +38,54 @@ public abstract class Machine : MonoBehaviour
     public abstract Dictionary<string, Command.Method> GetMethodsDict();
     public abstract void OnTick();
 
+
+    /* ~~~~~~ USER WRITTEN CODE ~~~~~~~ */
+
+    public string Script { private set; get; }
+    public void SetScript(string script) {
+        this.Script = script;
+        commands = ScriptParser.ParseCommandStrings(script);
+    }
+    private string[] commands;
+
+
+    /* ~~~~~~ LABEL AND SELECTING ~~~~~~~ */
+
+    protected Canvas labelCanvas;
+    protected Text labelText;
+
+    private void SetupLabel() {
+        labelCanvas = GetComponentInChildren<Canvas>();
+        labelCanvas.enabled = false;
+        labelText = labelCanvas.GetComponentInChildren<Text>();
+        SetName("Machine: " + ID);
+    }
+
+
+    public string MachineName { private set; get; }
+    public void SetName(string name) { MachineName = name; labelText.text = name; }
+
+    private bool focused = false;
+    public void SetFocus(bool val) {
+        focused = val;
+        ShowLabel(val);
+    }
+    private void ShowLabel(bool val) {
+        labelCanvas.enabled = val;
+    }
+
     private void OnMouseDown() {
         UIManager.ui.Focus(this);
+    }
+
+    private void OnMouseEnter() {
+        if (labelCanvas != null) {
+            ShowLabel(true);
+        }
+    }
+    private void OnMouseExit() {
+        if (labelCanvas != null && !focused) {
+            ShowLabel(false);
+        }
     }
 }

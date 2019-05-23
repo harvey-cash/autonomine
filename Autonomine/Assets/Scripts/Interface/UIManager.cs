@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     public static UIManager ui;
@@ -11,18 +12,24 @@ public class UIManager : MonoBehaviour {
 
     /* ~~~~~ UI WINDOWS ~~~~~ */
     public ScriptWindow scriptWindow;
+    public InputField nameInputField;
 
     public bool ScriptFocused() { return scriptWindow.IsFocused(); }
 
     /* ~~~~~ ACCESS MACHINES ~~~~~~~ */
 
-    public Machine focusedMachine;
+    public Machine focus;
 
     public void Focus(Machine machine) {
-        if (focusedMachine == null || machine.ID != focusedMachine.ID) {
-            focusedMachine = machine;
+        if (focus == null || machine.ID != focus.ID) {
+            machine.SetFocus(true);
+            if (focus != null) { focus.SetFocus(false); }
+            focus = machine;
 
-            ShowScript(focusedMachine.Script);
+
+            nameInputField.text = focus.MachineName;
+            Debug.Log(focus.Script);
+            ShowScript(focus.Script);
         }
     }
 
@@ -31,12 +38,16 @@ public class UIManager : MonoBehaviour {
         scriptWindow.LoadScript(script);
     }
 
-    public void OnApply() {
-        if (focusedMachine == null) {
+    public void OnSubmitScript() {
+        if (focus == null) {
             Debug.Log("No machine selected!");
             return;
         }
 
-        focusedMachine.SetScript(scriptWindow.GetText());
+        focus.SetScript(scriptWindow.GetText());
+    }
+
+    public void OnSubmitName() {
+        if (focus != null) { focus.SetName(nameInputField.text); }
     }
 }
