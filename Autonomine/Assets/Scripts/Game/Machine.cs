@@ -41,13 +41,17 @@ public abstract class Machine : MonoBehaviour
 
     /* ~~~~~~ USER WRITTEN CODE ~~~~~~~ */
 
+    private string[] commands;
     public string Script { private set; get; }
     public void SetScript(string script) {
         this.Script = script;
         commands = ScriptParser.ParseCommandStrings(script);
     }
-    private string[] commands;
-
+    
+    // Run one-offs (i.e. from terminal)
+    public void RunCommands(string[] commandArray) {
+        (memory, _) = Command.Run(methods, memory, commandArray);
+    }
 
     /* ~~~~~~ LABEL AND SELECTING ~~~~~~~ */
 

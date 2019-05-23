@@ -20,12 +20,8 @@ public class Terminal : MonoBehaviour
         terminal = this;
     }
 
-    public void Run() {
-        Print("> " + input.text);
-
-        string[] commands = ScriptParser.ParseCommandStrings(input.text);
-        (memory, _) = Command.Run(methods, memory, commands);
-
+    public void Submit() {
+        UIManager.ui.RunOnMachine(input.text);
         input.text = "";
     }
 
