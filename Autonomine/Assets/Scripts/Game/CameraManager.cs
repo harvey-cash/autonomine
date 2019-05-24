@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
-{    
+{
+    public Camera gameCamera;
 
     void Update() {
         if (!UIManager.ui.ScriptFocused()) {
             ButtonMovement();
             MouseMovement();
+            ScrollMovement();
         }
+    }
+
+    private float scrollCoeff = 2f;
+    private void ScrollMovement() {
+        gameCamera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollCoeff;
     }
 
     private float speedCoeff = 5f;

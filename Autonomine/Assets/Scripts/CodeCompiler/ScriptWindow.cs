@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ScriptWindow : MonoBehaviour, IPointerClickHandler
+public class ScriptWindow : MonoBehaviour , IPointerClickHandler
 {
-    public InputField input;
+    public ScriptInputField input;
 
     public bool IsFocused() {
         return input.isFocused;
@@ -17,10 +17,10 @@ public class ScriptWindow : MonoBehaviour, IPointerClickHandler
     }
 
     public string GetText() { return input.text; }
-
+    
     public void OnPointerClick(PointerEventData eventData)
      {
-        input.Select();
-        input.ActivateInputField();
+        Debug.Log("scriptWindow");
+        input.Activate(eventData);
     }
 }
