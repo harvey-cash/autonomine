@@ -17,6 +17,10 @@ public class PlayerMachine : Machine {
         };
     }
 
+    public override string GetMethodsList() {
+        return "help()";
+    }
+
     public override void OnTick() {
         
     }    

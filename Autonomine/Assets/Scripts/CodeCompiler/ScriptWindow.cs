@@ -18,9 +18,7 @@ public class ScriptWindow : MonoBehaviour , IPointerClickHandler
 
     public string GetText() { return input.text; }
     
-    public void OnPointerClick(PointerEventData eventData)
-     {
-        Debug.Log("scriptWindow");
-        input.Activate(eventData);
+    public void OnPointerClick(PointerEventData eventData) {
+        input.OnPointerDown(eventData);
     }
 }

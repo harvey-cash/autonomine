@@ -37,6 +37,7 @@ public abstract class Machine : MonoBehaviour
     }
 
     public abstract (string, Func<object[], object>)[] GetMethods();
+    public abstract string GetMethodsList();
     public abstract void OnTick();
 
 
@@ -56,16 +57,13 @@ public abstract class Machine : MonoBehaviour
 
     /* ~~~~~~ LABEL AND SELECTING ~~~~~~~ */
 
-    protected Canvas labelCanvas = null;
-    protected Text labelText = null;
+    protected UILabel uiLabel;
 
     private void SetupLabel() {
-        labelCanvas = GetComponentInChildren<Canvas>();
-        if (labelCanvas != null) {
-            labelCanvas.enabled = false;
-            labelText = labelCanvas.GetComponentInChildren<Text>();
-        }
-
+        uiLabel = Instantiate(UIManager.ui.labelPrefab).GetComponent<UILabel>();
+        uiLabel.Initialise(this, transform.position + new Vector3(1, 1, 0) * transform.localScale.y);
+        uiLabel.Show(false);
+        uiLabel.SetMethods(GetMethodsList());
         SetName(DefaultName() + ": " + ID);
     }
     protected abstract string DefaultName();
@@ -73,17 +71,13 @@ public abstract class Machine : MonoBehaviour
     public string MachineName { private set; get; }
     public void SetName(string name) {
         MachineName = name;
-
-        if (labelText != null) { labelText.text = name; }        
+        uiLabel.SetName(name);
     }
 
     private bool focused = false;
     public void SetFocus(bool val) {
         focused = val;
-        if (labelCanvas != null) { ShowLabel(val); }
-    }
-    private void ShowLabel(bool val) {
-        labelCanvas.enabled = val;
+        uiLabel.Show(val);
     }
 
     private void OnMouseDown() {
@@ -91,13 +85,11 @@ public abstract class Machine : MonoBehaviour
     }
 
     private void OnMouseEnter() {
-        if (labelCanvas != null) {
-            ShowLabel(true);
-        }
+        uiLabel.Show(true);
     }
     private void OnMouseExit() {
-        if (labelCanvas != null && !focused) {
-            ShowLabel(false);
+        if (!focused) {
+            uiLabel.Show(false);
         }
     }
 }

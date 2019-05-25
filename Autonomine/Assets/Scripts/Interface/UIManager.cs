@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour {
 
     /* ~~~~~ UI WINDOWS ~~~~~ */
 
+    public Canvas labelsCanvas;
+    public GameObject labelPrefab;
+
     public ScriptWindow scriptWindow;
     public InputField nameInputField;
 

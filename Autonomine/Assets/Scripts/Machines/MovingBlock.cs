@@ -25,6 +25,10 @@ public class MovingBlock : Machine {
         };
     }
 
+    public override string GetMethodsList() {
+        return "move(dX,dZ)";
+    }
+
     public override void OnTick() {
         memory["xPos"] = transform.position.x;
         memory["zPos"] = transform.position.z;        
