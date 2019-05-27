@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public static UIManager ui;
 
+    private UIColourScheme colourScheme;
+
     private void Awake() {
         ui = this;
+        colourScheme = GetComponent<UIColourScheme>();
     }
 
     /* ~~~~~ UI WINDOWS ~~~~~ */

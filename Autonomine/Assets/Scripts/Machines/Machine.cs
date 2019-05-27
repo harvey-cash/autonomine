@@ -32,7 +32,8 @@ public abstract class Machine : MonoBehaviour
         if (runOnTick && commands != null) {
             actionTaken = false;
             OnTick(); // allow sub class to put whatever it likes in memory, etc.
-            (memory, _) = SandSharp.Run(methods, memory, commands);
+
+            (memory, _) = SandSharp.LookupAndRun(methods, out bool exists, memory, "onTick", new string[0], null);
         }
     }
 
@@ -48,6 +49,7 @@ public abstract class Machine : MonoBehaviour
     public void SetScript(string script) {
         this.Script = script;
         commands = ScriptParser.ParseCommandStrings(script);
+        (memory, _) = SandSharp.Run(methods, memory, commands);
     }
     
     // Run one-offs (i.e. from terminal)
@@ -63,7 +65,10 @@ public abstract class Machine : MonoBehaviour
         uiLabel = Instantiate(UIManager.ui.labelPrefab).GetComponent<UILabel>();
         uiLabel.Initialise(this, transform.position + new Vector3(1, 1, 0) * transform.localScale.y);
         uiLabel.Show(false);
+
+        uiLabel.SetOverrides("onTick()");
         uiLabel.SetMethods(GetMethodsList());
+
         SetName(DefaultName() + ": " + ID);
     }
     protected abstract string DefaultName();

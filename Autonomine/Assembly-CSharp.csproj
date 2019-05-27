@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Game\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Interface\ScriptInputField.cs" />
+    <Compile Include="Assets\Scripts\Interface\UIColourScheme.cs" />
     <Compile Include="Assets\Scripts\Interface\UILabel.cs" />
     <Compile Include="Assets\Scripts\Interface\UIManager.cs" />
     <Compile Include="Assets\Scripts\Machines\Machine.cs" />
