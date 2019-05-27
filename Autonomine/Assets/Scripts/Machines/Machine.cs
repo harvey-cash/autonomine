@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Machine : MonoBehaviour
+public abstract class Machine : MonoBehaviour, IGridPlaceable
 {
     private static int uniqueID = 0;
     public static int GenerateID() { return uniqueID++; }
@@ -26,6 +26,11 @@ public abstract class Machine : MonoBehaviour
         methods = MethodBuilder.GenerateLibrary(GetMethods());
 
         GameManager.manager.onTick.AddListener(TickListener);
+
+        GameManager.manager.PlaceAtGridPos(this, 0, 0, out bool success);
+        if (!success) {
+            throw new Exception();
+        }
     }
 
     private void TickListener() {
@@ -96,5 +101,20 @@ public abstract class Machine : MonoBehaviour
         if (!focused) {
             uiLabel.Show(false);
         }
+    }
+
+    // ~~~~~ IGridPlaceable ~~~~~~~ //
+    private Vector2Int gridCoords;
+
+    public Transform GetTransform() {
+        return transform;
+    }
+
+    public Vector2Int CurrentCoords() {
+        return gridCoords;
+    }
+
+    public void SetCoords(Vector2Int coords) {
+        gridCoords = coords;
     }
 }
