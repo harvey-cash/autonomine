@@ -67,6 +67,9 @@
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\MethodBuilder.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\SandSharp.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\ScriptParser.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\SandSharpInputField.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\SandSharpLineCount.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\SandSharpText.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\UserMethod.cs" />
     <Compile Include="Assets\Scripts\Config.cs" />
     <Compile Include="Assets\Scripts\Game\CameraManager.cs" />
