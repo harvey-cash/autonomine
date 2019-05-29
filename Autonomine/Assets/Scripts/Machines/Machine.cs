@@ -49,7 +49,7 @@ public abstract class Machine : MonoBehaviour, IGridPlaceable
 
     /* ~~~~~~ USER WRITTEN CODE ~~~~~~~ */
 
-    private string[] commands;
+    private Command[] commands;
     public string Script { private set; get; }
     public void SetScript(string script) {
         this.Script = script;
@@ -58,7 +58,7 @@ public abstract class Machine : MonoBehaviour, IGridPlaceable
     }
     
     // Run one-offs (i.e. from terminal)
-    public void RunCommands(string[] commandArray) {
+    public void RunCommands(Command[] commandArray) {
         (memory, _) = SandSharp.Run(methods, memory, commandArray);
     }
 

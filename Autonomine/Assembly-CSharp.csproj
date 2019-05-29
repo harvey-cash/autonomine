@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\Command.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\Library.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\Method.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\MethodBuilder.cs" />
@@ -76,7 +77,7 @@
     <Compile Include="Assets\Scripts\Game\Deposit.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\IGridPlaceable.cs" />
-    <Compile Include="Assets\Scripts\Interface\ScriptInputField.cs" />
+    <Compile Include="Assets\Scripts\Game\ScriptTester.cs" />
     <Compile Include="Assets\Scripts\Interface\ScriptWindow.cs" />
     <Compile Include="Assets\Scripts\Interface\Terminal.cs" />
     <Compile Include="Assets\Scripts\Interface\UIColourScheme.cs" />
