@@ -79,12 +79,12 @@
     <Compile Include="Assets\Scripts\Game\ScriptTester.cs" />
     <Compile Include="Assets\Scripts\Interface\ScriptWindow.cs" />
     <Compile Include="Assets\Scripts\Interface\Terminal.cs" />
+    <Compile Include="Assets\Scripts\Interface\TickProgress.cs" />
     <Compile Include="Assets\Scripts\Interface\UIColourScheme.cs" />
     <Compile Include="Assets\Scripts\Interface\UILabel.cs" />
     <Compile Include="Assets\Scripts\Interface\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Machines\Drone.cs" />
     <Compile Include="Assets\Scripts\Machines\Machine.cs" />
-    <Compile Include="Assets\Scripts\Machines\MovingBlock.cs" />
+    <Compile Include="Assets\Scripts\Machines\Miner.cs" />
     <Compile Include="Assets\Scripts\Machines\PlayerMachine.cs" />
     <None Include="Assets\Libraries\sand-sharp-language\Python\batch_script.txt" />
     <Reference Include="Unity.Timeline.Editor">
