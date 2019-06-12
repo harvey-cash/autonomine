@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour {
         if (focus == null) { Debug.Log("No machine focused!"); return; }
 
         Terminal.terminal.Print("<" + focus.MachineName + "> " + script);
-        string[] commands = ScriptParser.ParseCommandStrings(script);
+        Command[] commands = ScriptParser.ParseCommandStrings(script);
         focus.RunCommands(commands);
     }
 

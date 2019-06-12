@@ -21,6 +21,14 @@ public class PlayerMachine : Machine {
         return "help()";
     }
 
+    public override string GetVariablesList() {
+        return "int ore\nint pos";
+    }
+
+    public override void OnStart() {
+        
+    }
+
     public override void OnTick() {
         
     }    

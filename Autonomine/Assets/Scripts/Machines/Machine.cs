@@ -27,29 +27,36 @@ public abstract class Machine : MonoBehaviour, IGridPlaceable
 
         GameManager.manager.onTick.AddListener(TickListener);
 
-        GameManager.manager.PlaceAtGridPos(this, 0, 0, out bool success);
-        if (!success) {
-            throw new Exception();
-        }
+        OnStart();
     }
+
+    public abstract void OnStart();
 
     private void TickListener() {
         if (runOnTick && commands != null) {
             actionTaken = false;
             OnTick(); // allow sub class to put whatever it likes in memory, etc.
 
-            (memory, _) = SandSharp.LookupAndRun(methods, out bool exists, memory, "onTick", new string[0], null);
+            (memory, _) = SandSharp.LookupAndRun(
+                methods, 
+                out bool exists, 
+                memory, 
+                "onTick", 
+                new string[0], 
+                new Command(0,null)
+            );
         }
     }
 
     public abstract (string, Func<object[], object>)[] GetMethods();
     public abstract string GetMethodsList();
+    public abstract string GetVariablesList();
     public abstract void OnTick();
 
 
     /* ~~~~~~ USER WRITTEN CODE ~~~~~~~ */
 
-    private string[] commands;
+    private Command[] commands;
     public string Script { private set; get; }
     public void SetScript(string script) {
         this.Script = script;
@@ -58,7 +65,7 @@ public abstract class Machine : MonoBehaviour, IGridPlaceable
     }
     
     // Run one-offs (i.e. from terminal)
-    public void RunCommands(string[] commandArray) {
+    public void RunCommands(Command[] commandArray) {
         (memory, _) = SandSharp.Run(methods, memory, commandArray);
     }
 
@@ -71,6 +78,7 @@ public abstract class Machine : MonoBehaviour, IGridPlaceable
         uiLabel.Initialise(this, transform.position + new Vector3(1, 1, 0) * transform.localScale.y);
         uiLabel.Show(false);
 
+        uiLabel.SetVariables(GetVariablesList());
         uiLabel.SetOverrides("onTick()");
         uiLabel.SetMethods(GetMethodsList());
 
@@ -101,20 +109,5 @@ public abstract class Machine : MonoBehaviour, IGridPlaceable
         if (!focused) {
             uiLabel.Show(false);
         }
-    }
-
-    // ~~~~~ IGridPlaceable ~~~~~~~ //
-    private Vector2Int gridCoords;
-
-    public Transform GetTransform() {
-        return transform;
-    }
-
-    public Vector2Int CurrentCoords() {
-        return gridCoords;
-    }
-
-    public void SetCoords(Vector2Int coords) {
-        gridCoords = coords;
     }
 }

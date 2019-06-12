@@ -10,7 +10,7 @@ public class UILabel : MonoBehaviour
 
     private Machine machine;
     private RectTransform rect;
-    public Text nameText, overridesText, methodsText;
+    public Text nameText, variablesText, overridesText, methodsText;
 
     private void Awake() {
         rect = GetComponent<RectTransform>();        
@@ -31,12 +31,17 @@ public class UILabel : MonoBehaviour
     public void Show(bool show) {
         GetComponent<Image>().enabled = show;
         nameText.enabled = show;
+        variablesText.enabled = show;
         overridesText.enabled = show;
         methodsText.enabled = show;
     }
 
     public void SetName(string name) {
         nameText.text = name;
+    }
+
+    public void SetVariables(string variablesList) {
+        variablesText.text = variablesList;
     }
 
     public void SetOverrides(string overridesList) {

@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public Camera gameCamera;
 
     void Update() {
-        if (!UIManager.ui.ScriptFocused()) {
+        if (UIManager.ui != null && !UIManager.ui.ScriptFocused()) {
             ButtonMovement();
             MouseMovement();
             ScrollMovement();

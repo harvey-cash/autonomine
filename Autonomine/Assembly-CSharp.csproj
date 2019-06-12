@@ -62,29 +62,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\Command.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\Library.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\Method.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\MethodBuilder.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\SandSharp.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\SandSharpException.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\ScriptParser.cs" />
-    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\SandSharpInputField.cs" />
-    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\SandSharpLineCount.cs" />
-    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\SandSharpText.cs" />
+    <Compile Include="Assets\Libraries\sand-sharp-language\C#\UnityIDE\CodeWindow.cs" />
     <Compile Include="Assets\Libraries\sand-sharp-language\C#\UserMethod.cs" />
     <Compile Include="Assets\Scripts\Config.cs" />
     <Compile Include="Assets\Scripts\Game\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Game\Deposit.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\IGridPlaceable.cs" />
-    <Compile Include="Assets\Scripts\Interface\ScriptInputField.cs" />
+    <Compile Include="Assets\Scripts\Game\ScriptTester.cs" />
     <Compile Include="Assets\Scripts\Interface\ScriptWindow.cs" />
     <Compile Include="Assets\Scripts\Interface\Terminal.cs" />
+    <Compile Include="Assets\Scripts\Interface\TickProgress.cs" />
     <Compile Include="Assets\Scripts\Interface\UIColourScheme.cs" />
     <Compile Include="Assets\Scripts\Interface\UILabel.cs" />
     <Compile Include="Assets\Scripts\Interface\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Machines\Drone.cs" />
     <Compile Include="Assets\Scripts\Machines\Machine.cs" />
-    <Compile Include="Assets\Scripts\Machines\MovingBlock.cs" />
+    <Compile Include="Assets\Scripts\Machines\Miner.cs" />
     <Compile Include="Assets\Scripts\Machines\PlayerMachine.cs" />
     <None Include="Assets\Libraries\sand-sharp-language\Python\batch_script.txt" />
     <Reference Include="Unity.Timeline.Editor">
